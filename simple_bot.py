@@ -56,7 +56,7 @@ class Bot:
             print(error)
             return None
 
-    def send_message(self, receiver_user_id: str = None, message_text: str = "тестовое сообщение"):
+    def send_message(self, receiver_user_id=None, message_text="тестовое сообщение"):
         """
         Отправка сообщения от лица авторизованного пользователя
         :param receiver_user_id: уникальный идентификатор получателя сообщения
@@ -69,8 +69,9 @@ class Bot:
         # если не указан ID - берём значение по умолчанию, если таковое указано в .env-файле
         if receiver_user_id is None:
             receiver_user_id = self.default_user_id
-
+        #kak tebe takoe
         try:
+
             self.vk_api_access.messages.send(user_id=receiver_user_id, message=message_text, random_id=get_random_id())
             print(f"Сообщение отправлено для ID {receiver_user_id} с текстом: {message_text}")
         except Exception as error:
